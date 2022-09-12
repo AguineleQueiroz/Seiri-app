@@ -263,7 +263,6 @@ form > button {
   }
 }
 
-
 /* modal config ==================================== */
 
 .modal-content {
@@ -284,6 +283,10 @@ form > button {
 }
 
 .links__sidebar:hover {
+  background-color: var(--white-color);
+}
+
+.links__sidebar:focus {
   background-color: var(--white-color);
 }
 
