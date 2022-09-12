@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seiri - Tudo em Ordem!</title>
+    
+    <!-- CSS bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    
+    <!-- css theme -->
+    <link rel="stylesheet" href="{% static 'css/one-page-theme.css' %}">
+
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top bg-white  border-bottom">
+            <div class="container">
+                
+                <a class="navbar-brand" href="{% url 'home' %}">                
+                    <img class="img-fluid pb-2" src="{% static 'img/landing-page/logomarca.png' %}" alt="organização">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-4 pt-lg-0 me-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#sobre">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#recursos">Recursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#precos">Planos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                    </ul>
+
+                    <div class="buttons-header text-end d-flex justify-content-start">
+                        <a href="{% url 'entrar' %}" type="button" class="btn btn-login me-2">Entre</a>
+                        <a href="{% url 'cadastrar' %}" type="button" class="btn btn-register">Cadastre-se grátis</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- main -->
+    <main class="mb-5">
+
+        <!-- hero -->
+        <section class="section py-5 mt-5 mt-lg-0 container">
+            <div class="col d-lg-flex gap-5 mt-lg-5 ">
+                <div class="col text-center text-lg-start align-self-center mb-lg-5 mt-md-5">
+                    <p class="h1 mt-2 fw-bold text-lg-start ">Organize o seu trabalho, seu dia e sua vida, finalmente! </p>
+                    <p class="text-muted text-lg-start mb-lg-5">Finalmente alcance o foco, a organização e a calma com o Seiri. O gerenciador de lista de tarefas nº 1 do mundo</p>
+                </div>
+                <div class="col">
+                    <img class="img-fluid" src="{% static 'img/landing-page/calendar.svg' %}" alt="organização">
+                </div>
+            </div>
+        </section>
+        
+        <!-- about app -->
+        <section class="bg-light py-5 mt-lg-5" id="sobre">
+            <div class="section container text-center  mt-md-5">
+                <div class="col d-lg-flex align-self-center order-1">
+                    <div class="col align-self-center mt-5 order-1">
+                        <div class="fs-6 text-lg-start">FAÇA MAIS</div>
+                        <div class="mb-5">
+                            <p class="h2 fw-semibold text-lg-start">Adicione suas tarefas. Organize sua vida. Conquiste mais a cada dia.</p>
+                            <p class="text-muted text-lg-start">
+                                Adicione suas tarefas como "Ler e-mails de trabalho todos os dias às 10h"
+                                em segundos usando o nosso sistema de cadastro rápido.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col  align-self-center mt-lg-4">
+                        <img class="img-fluid" src="{% static 'img/landing-page/task-rapida.svg' %}" alt="cadastro rápido de tarefas">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="section py-5 mt-5 container text-center pb-5">
+            <div class="col d-lg-flex gap-5 flex-wrap-reverse">
+                <div class="col align-self-center">
+                    <div class="fs-6 text-lg-start">ESVAZIE SUA MENTE</div>
+                    <div>
+                        <p class="h2 fw-semibold text-lg-start">Encontre a clareza mental que você tanto busca.</p>
+                        <p class="text-muted text-lg-start">
+                            Suas listas de tarefa são automaticamente classificadas pelas datas de entregas mais rápidas. 
+                            Te ajudando a focar nas coisas que mais importam.
+                        </p>
+                    </div>
+                </div>
+                <div class="col pb-4">
+                    <img class="img-fluid" src="{% static 'img/landing-page/livre-task.svg' %}" alt="livre de desorganização">
+                </div>
+            </div>
+        </section>
+
+        <!-- recursos -->
+        <section class="bg-light py-5 d-flex flex-column vh-100" id="recursos">
+            <div class="section container col align-items-center mt-5 mt-sm-0 mt-md-0">
+                <div class="col text-center ">
+                    <h2 class="fw-semibold ">Uma gestão de tarefas descomplicada</h2>
+                    <p class="text-muted mt-3">Um gerenciador de tarefas no qual você pode confiar</p>
+                </div>
+                <div class="servicos col d-sm-flex d-lg-flex text-center w-100">
+                    <!-- servico 1 -->
+                    <div class="servicos pb-2 col-lg-4">
+                        <img class="img-fluid" src="{% static 'img/landing-page/foguete.png' %}" alt="foguete">
+                        <h6 class="pt-3">Rapidez</h6>
+                        <p class="text-muted">Cadastro rápido de tarefas</p>
+                    </div>
+                    <!-- servico 2 -->
+                    <div class="servicos pb-2 col-lg-4">
+                        <img class="img-fluid" src="{% static 'img/landing-page/historia.png' %}" alt="tarefas rastreáveis">
+                        <h6 class="pt-3">Tarefas Rastreáveis</h6>
+                        <p class="text-muted">Histórico de tarefas concluídas</p>
+                    </div>
+                    <!-- servico 3 -->
+                    <div class="servicos pb-2 col-lg-4">
+                        <img class="img-fluid" src="{% static 'img/landing-page/easy.png' %}" alt="facilidade de uso">
+                        <h6 class="pt-3">Simples</h6>
+                        <p class="text-muted">Usabilidade prática e facilitada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- planos -->
+        <div class="section  py-5 mt-5 container text-center" id="precos">
+            <div class="pricing-header p-3 pb-md-4 mx-auto text-center mt-md-5">
+                <h2 class="fw-normal fw-bold mt-5  ">Planos</h2>
+                <p class="fs-5 text-muted">Encontre o plano que melhor te atenda.</p>
+            </div>
+            <div class="cards__plans row row-cols-1 mb-3 text-center justify-content-center">
+                <div class="col col-lg-4 col-md-8 col-sm-10 col-10">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Free</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">R$0<small class="text-muted fw-light">/mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>10 usuarios inclusos</li>
+                            <li>Suporte</li>
+                        </ul>
+                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Inscreva-se grátis</button>
+                    </div>
+                    </div>
+                </div>
+                <div class="col col-lg-4 col-md-8 col-sm-10 col-10">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Pro</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">R$15<small class="text-muted fw-light">/mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>20 usuarios inclusos</li>
+                            <li>Suporte</li>
+                        </ul>
+                        <button type="button" class="w-100 btn btn-lg btn-primary">Começar</button>
+                    </div>
+                    </div>
+                </div>
+                <div class="col col-lg-4 col-md-8 col-sm-10 col-10">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                    <div class="card-header py-3 text-bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">Comercial</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">R$29<small class="text-muted fw-light">/mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>30 usuarios inclusos</li>
+                            <li>Suporte</li>
+                        </ul>
+                        <button type="button" class="w-100 btn btn-lg btn-primary">Contate-nos</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="fs-3 text-center mb-4 fw-semibold ">Compare Planos</h2>
+            <div class="table-responsive">
+
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <th style="width: 34%;"></th>
+                        <th style="width: 22%;">Free</th>
+                        <th style="width: 22%;">Pro</th>
+                        <th style="width: 22%;">Empresarial</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">Compartilhamento</th>
+                            <td></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Membros ilimitados</th>
+                            <td></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Segurança Extra</th>
+                            <td></td>
+                            <td></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- contact us -->
+        <div class="bg-light pt-5" id="contato">
+            <div class=" px-4 pt-5 container p-5 ">
+                <div class="mb-4">
+                    <h2 class="fw-semibold">Mande-nos uma mensagem!</h2>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Example@email.com" aria-label="Example text with two button addons">
+                    <button class="btn btn-primary p-lg-3 p-2" type="button">Contate-nos</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <div class="container ">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3 d-flex align-items-start  ">
+                <a href="/" class="mb-3 link-dark text-decoration-none">
+                    <svg width="111" height="54" viewBox="0 0 111 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M67.2303 35.728C67.2303 37.776 66.4516 39.3973 64.8943 40.592C63.3369 41.7867 61.4489 42.384 59.2303 42.384C57.7369 42.384 56.4996 42.0107 55.5182 41.264C54.5583 40.496 54.0249 39.8453 53.9183 39.312C54.1529 38.608 54.6543 37.8187 55.4223 36.944C56.1903 36.0693 56.8836 35.536 57.5023 35.344C58.5903 36.048 59.6036 37.616 60.5423 40.048C61.9289 40.0053 62.6223 39.248 62.6223 37.776C62.6223 36.9653 62.2916 35.9733 61.6302 34.8C60.9903 33.6053 60.2863 32.496 59.5183 31.472C58.7503 30.4267 58.0356 29.264 57.3743 27.984C56.7343 26.6827 56.4143 25.5307 56.4143 24.528C56.4143 22.9067 57.0649 21.6267 58.3663 20.688C59.6889 19.7493 61.1716 19.28 62.8142 19.28C64.4569 19.28 65.7263 19.632 66.6223 20.336C67.5396 21.04 67.9983 21.84 67.9983 22.736C67.9983 23.632 67.6569 24.5493 66.9743 25.488C66.2916 26.4267 65.6089 27.1733 64.9263 27.728L63.9023 28.56C64.1583 28.9013 64.4676 29.3387 64.8303 29.872C65.1929 30.4053 65.6836 31.312 66.3023 32.592C66.9209 33.872 67.2303 34.9173 67.2303 35.728ZM64.7663 25.232C65.0649 24.9547 65.3316 24.624 65.5663 24.24C65.8009 23.8347 65.9183 23.4187 65.9183 22.992C65.9183 22.544 65.6623 22.1707 65.1503 21.872C64.6383 21.5733 64.0196 21.424 63.2943 21.424C62.5903 21.424 61.9929 21.5947 61.5023 21.936C61.0329 22.256 60.7983 22.6507 60.7983 23.12C60.7983 23.568 60.9476 24.1013 61.2463 24.72C61.5663 25.3173 61.8756 25.8187 62.1743 26.224L62.6543 26.832C62.8676 26.7253 63.1983 26.5013 63.6463 26.16C64.1156 25.8187 64.4889 25.5093 64.7663 25.232ZM69.0508 36.464C69.0508 33.7973 69.8508 31.696 71.4508 30.16C73.0721 28.6027 74.9068 27.824 76.9548 27.824C78.2134 27.824 79.2481 28.1333 80.0588 28.752C80.8694 29.3707 81.2748 30.2027 81.2748 31.248C81.2748 32.272 81.0081 33.136 80.4748 33.84C79.9628 34.544 79.3334 35.088 78.5868 35.472C77.0721 36.2187 75.6854 36.688 74.4268 36.88L73.6588 36.976C73.8081 38.9813 74.6294 39.984 76.1228 39.984C76.6348 39.984 77.1788 39.856 77.7548 39.6C78.3308 39.344 78.7788 39.088 79.0988 38.832L79.5788 38.448L80.3468 39.472C80.1761 39.7067 79.8348 40.016 79.3228 40.4C78.8108 40.784 78.3308 41.104 77.8828 41.36C76.6454 42.0427 75.2908 42.384 73.8188 42.384C72.3468 42.384 71.1841 41.8613 70.3307 40.816C69.4774 39.7707 69.0508 38.32 69.0508 36.464ZM73.6268 35.408C74.7148 35.216 75.5788 34.7573 76.2188 34.032C76.8588 33.3067 77.1788 32.368 77.1788 31.216C77.1788 30.064 76.8374 29.488 76.1548 29.488C75.3441 29.488 74.7148 30.1813 74.2668 31.568C73.8401 32.9333 73.6268 34.2133 73.6268 35.408ZM88.584 29.808C88.584 30.704 88.296 32.2507 87.72 34.448C87.144 36.624 86.856 38.0533 86.856 38.736C86.856 39.3973 86.952 39.728 87.144 39.728C87.272 39.728 87.7627 39.5253 88.616 39.12L89 38.928L89.544 40.048C89.352 40.2187 89.096 40.432 88.776 40.688C88.456 40.944 87.8587 41.296 86.984 41.744C86.1093 42.1707 85.2987 42.384 84.552 42.384C83.8053 42.384 83.2187 42.16 82.792 41.712C82.3653 41.2427 82.152 40.624 82.152 39.856C82.152 39.0667 82.4187 37.68 82.952 35.696C83.4853 33.6907 83.752 32.3893 83.752 31.792C83.752 30.896 83.4747 30.0533 82.92 29.264L82.632 28.88L82.664 28.464C83.7947 28.144 85.6293 27.984 88.168 27.984C88.4453 28.304 88.584 28.912 88.584 29.808ZM84.936 24.496C84.5093 24.0693 84.296 23.504 84.296 22.8C84.296 22.096 84.584 21.4773 85.16 20.944C85.7573 20.4107 86.44 20.144 87.208 20.144C87.976 20.144 88.5733 20.3573 89 20.784C89.4267 21.2107 89.64 21.776 89.64 22.48C89.64 23.1627 89.3307 23.7707 88.712 24.304C88.1147 24.8373 87.4427 25.104 86.696 25.104C85.9493 25.104 85.3627 24.9013 84.936 24.496ZM91.3188 42.096H91.0948C91.0521 41.9253 91.0308 41.5413 91.0308 40.944C91.0308 40.3253 91.3188 38.6827 91.8948 36.016C92.4708 33.3493 92.7588 31.824 92.7588 31.44C92.7588 30.7787 92.4601 30.0533 91.8628 29.264L91.5748 28.88L91.6068 28.464C92.7588 28.144 94.6041 27.984 97.1428 27.984C97.3988 28.5387 97.5268 29.3173 97.5268 30.32C97.7614 29.936 98.2521 29.424 98.9988 28.784C99.7454 28.144 100.513 27.824 101.303 27.824C102.455 27.824 103.031 28.8267 103.031 30.832C102.924 30.96 102.775 31.1307 102.583 31.344C102.412 31.536 102.049 31.8133 101.495 32.176C100.961 32.5387 100.439 32.7627 99.9268 32.848C99.9054 32.848 99.7241 32.56 99.3828 31.984C99.0414 31.408 98.7854 31.12 98.6148 31.12C98.0814 31.312 97.6121 31.632 97.2068 32.08C96.2254 36.496 95.7348 39.3547 95.7348 40.656C95.7348 41.1253 95.7454 41.456 95.7668 41.648C95.0201 41.9467 93.5374 42.096 91.3188 42.096ZM108.959 29.808C108.959 30.704 108.671 32.2507 108.095 34.448C107.519 36.624 107.231 38.0533 107.231 38.736C107.231 39.3973 107.327 39.728 107.519 39.728C107.647 39.728 108.138 39.5253 108.991 39.12L109.375 38.928L109.919 40.048C109.727 40.2187 109.471 40.432 109.151 40.688C108.831 40.944 108.234 41.296 107.359 41.744C106.484 42.1707 105.674 42.384 104.927 42.384C104.18 42.384 103.594 42.16 103.167 41.712C102.74 41.2427 102.527 40.624 102.527 39.856C102.527 39.0667 102.794 37.68 103.327 35.696C103.86 33.6907 104.127 32.3893 104.127 31.792C104.127 30.896 103.85 30.0533 103.295 29.264L103.007 28.88L103.039 28.464C104.17 28.144 106.004 27.984 108.543 27.984C108.82 28.304 108.959 28.912 108.959 29.808ZM105.311 24.496C104.884 24.0693 104.671 23.504 104.671 22.8C104.671 22.096 104.959 21.4773 105.535 20.944C106.132 20.4107 106.815 20.144 107.583 20.144C108.351 20.144 108.948 20.3573 109.375 20.784C109.802 21.2107 110.015 21.776 110.015 22.48C110.015 23.1627 109.706 23.7707 109.087 24.304C108.49 24.8373 107.818 25.104 107.071 25.104C106.324 25.104 105.738 24.9013 105.311 24.496Z" fill="#1C6DD0"/>
+                        <rect y="7" width="47" height="47" rx="10" fill="#1C6DD0"/>
+                        <path d="M36.6405 21.1196C36.4584 20.936 36.2418 20.7903 36.0032 20.6909C35.7645 20.5915 35.5086 20.5403 35.25 20.5403C34.9915 20.5403 34.7356 20.5915 34.4969 20.6909C34.2583 20.7903 34.0417 20.936 33.8596 21.1196L19.27 35.7287L13.1405 29.5796C12.9514 29.397 12.7283 29.2534 12.4838 29.157C12.2393 29.0607 11.9782 29.0134 11.7154 29.018C11.4527 29.0225 11.1934 29.0788 10.9523 29.1835C10.7113 29.2883 10.4933 29.4395 10.3107 29.6285C10.1281 29.8175 9.9845 30.0407 9.88815 30.2852C9.79179 30.5297 9.74453 30.7908 9.74908 31.0535C9.75362 31.3163 9.80988 31.5756 9.91464 31.8166C10.0194 32.0577 10.1706 32.2757 10.3596 32.4583L17.8796 39.9783C18.0617 40.1619 18.2783 40.3075 18.5169 40.407C18.7556 40.5064 19.0115 40.5576 19.27 40.5576C19.5286 40.5576 19.7845 40.5064 20.0232 40.407C20.2618 40.3075 20.4784 40.1619 20.6605 39.9783L36.6405 23.9983C36.8392 23.8149 36.9979 23.5924 37.1064 23.3446C37.2149 23.0969 37.2709 22.8294 37.2709 22.5589C37.2709 22.2885 37.2149 22.021 37.1064 21.7732C36.9979 21.5255 36.8392 21.3029 36.6405 21.1196Z" fill="white"/>
+                        <path d="M46.0379 0.868157C45.7601 0.593067 45.4296 0.374722 45.0654 0.225718C44.7012 0.0767141 44.3106 0 43.9161 0C43.5215 0 43.1309 0.0767141 42.7668 0.225718C42.4026 0.374722 42.0721 0.593067 41.7942 0.868157L19.5299 22.763L10.1759 13.5472C9.8874 13.2735 9.54689 13.0584 9.17376 12.914C8.80063 12.7695 8.40219 12.6987 8.00119 12.7055C7.60019 12.7124 7.20448 12.7967 6.83666 12.9537C6.46884 13.1107 6.13611 13.3373 5.85747 13.6206C5.57882 13.9039 5.35973 14.2383 5.21268 14.6047C5.06563 14.9712 4.99352 15.3625 5.00046 15.7563C5.00739 16.1501 5.09325 16.5387 5.25311 16.8999C5.41298 17.2612 5.64373 17.5879 5.93218 17.8616L17.408 29.1318C17.6859 29.4069 18.0164 29.6253 18.3806 29.7743C18.7447 29.9233 19.1354 30 19.5299 30C19.9244 30 20.315 29.9233 20.6792 29.7743C21.0434 29.6253 21.3739 29.4069 21.6517 29.1318L46.0379 5.18255C46.3412 4.90772 46.5833 4.57415 46.7489 4.20288C46.9145 3.83161 47 3.43068 47 3.02535C47 2.62003 46.9145 2.2191 46.7489 1.84783C46.5833 1.47656 46.3412 1.14299 46.0379 0.868157Z" fill="white"/>
+                    </svg>
+                </a>
+                <p class="text-muted mt-4 ms-3"> &copy; 2022</p>
+            </div>
+
+            <div class="col mb-3">
+
+            </div>
+
+            <div class="col mb-3">
+
+            </div>
+            
+            <div class="col mb-3 ">
+                <h6>Menu</h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#sobre" class="nav-link p-0 text-muted">Sobre</a></li>
+                    <li class="nav-item mb-2"><a href="#recursos" class="nav-link p-0 text-muted">Recursos</a></li>
+                    <li class="nav-item mb-2"><a href="#precos" class="nav-link p-0 text-muted">Preços</a></li>
+                </ul>
+            </div>
+            
+            
+            <div class="col mb-3 flex-grow-1">
+                <h6>Contate-nos nas redes sociais</h6>
+                <ul class="nav flex-row mt-4">
+                    <li class="nav-item mb-3">
+                        <a href="#" class="nav-link p-0 text-muted d-flex">
+                            <img src="{% static 'img/landing-page/instagram.png' %}" alt="instagram icon">
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3 ms-4">
+                        <a href="#" class="nav-link p-0 text-muted d-flex">
+                            <img src="{% static 'img/landing-page/twitter.png' %}" alt="whatsapp icon">
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3 ms-4">
+                        <a href="#" class="nav-link p-0 text-muted d-flex">
+                            <img src="{% static 'img/landing-page/whatsapp.png' %}" alt="twitter icon">
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- js bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</body>
+</html>

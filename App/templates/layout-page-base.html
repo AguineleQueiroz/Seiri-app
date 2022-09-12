@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block title %} Seiri - Tudo em Ordem! {% endblock title %}</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'img/aplicacao/logo.svg' %}" type="image/x-icon">
+
+    <!-- css bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+
+    <!-- css customizado estático -->
+    <link rel="stylesheet" href="{% static 'css/pages-application.css' %}">
+
+
+  </head>
+  <body>
+    <header class="d-flex align-content-center fixed-top">
+      <nav class="navbar navbar-expand-lg w-100">
+        <div class="container-fluid px-5">
+        <div class="w-100 d-flex justify-content-between" id="navbarNav">
+          <div class="box-header-1 d-flex align-items-center gap-2">
+              <a class="btn btn__menu border-0" id="btn_menu" title="Menu">
+                <svg width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 12.25C24.25 11.3856 23.7301 10.6848 23.0887 10.6848H1.41129C0.769927 10.6848 0.25 11.3856 0.25 12.25C0.25 13.1144 0.769927 13.8152 1.41129 13.8152H23.0887C23.7301 13.8152 24.25 13.1144 24.25 12.25Z" fill="#F7F7F7"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 1.81522C24.25 0.950772 23.7301 0.25 23.0887 0.25H1.41129C0.769927 0.25 0.25 0.950772 0.25 1.81522C0.25 2.67966 0.769927 3.38043 1.41129 3.38043H23.0887C23.7301 3.38043 24.25 2.67966 24.25 1.81522Z" fill="#F7F7F7"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 22.6848C24.25 21.8203 23.7301 21.1196 23.0887 21.1196H1.41129C0.769927 21.1196 0.25 21.8203 0.25 22.6848C0.25 23.5492 0.769927 24.25 1.41129 24.25H23.0887C23.7301 24.25 24.25 23.5492 24.25 22.6848Z" fill="#F7F7F7"/>
+                </svg>
+              </a>
+              <a class="nav-link" aria-current="page" href="{% url 'listagem_tarefas' %}" title="Home">
+                  <img style="width: 24px;" src="{% static 'img/aplicacao/house.svg' %}">
+              </a>
+          </div>
+          <ul class="navbar-nav flex-row">
+            <div class="box-header-2 d-flex gap-3">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{% url 'adicionar_tarefa' %}" title="Adicionar tarefa" data-bs-toggle="modal" data-bs-target="#adicionarModal">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20.3333 9.66665H12.3333V1.66665C12.3333 1.31302 12.1928 0.973886 11.9427 0.723838C11.6927 0.473789 11.3535 0.333313 10.9999 0.333313C10.6463 0.333313 10.3072 0.473789 10.0571 0.723838C9.80706 0.973886 9.66658 1.31302 9.66658 1.66665V9.66665H1.66659C1.31296 9.66665 0.973825 9.80712 0.723776 10.0572C0.473728 10.3072 0.333252 10.6464 0.333252 11C0.333252 11.3536 0.473728 11.6927 0.723776 11.9428C0.973825 12.1928 1.31296 12.3333 1.66659 12.3333H9.66658V20.3333C9.66658 20.6869 9.80706 21.0261 10.0571 21.2761C10.3072 21.5262 10.6463 21.6666 10.9999 21.6666C11.3535 21.6666 11.6927 21.5262 11.9427 21.2761C12.1928 21.0261 12.3333 20.6869 12.3333 20.3333V12.3333H20.3333C20.6869 12.3333 21.026 12.1928 21.2761 11.9428C21.5261 11.6927 21.6666 11.3536 21.6666 11C21.6666 10.6464 21.5261 10.3072 21.2761 10.0572C21.026 9.80712 20.6869 9.66665 20.3333 9.66665Z" fill="white"/>
+                    </svg>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img style="width: 22px;" src="{% static 'img/aplicacao/user.png' %}">
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="nav-item"><a class="dropdown-item" href="{% url 'perfil_usuario' %}" title="Informações de perfil" data-bs-toggle="modal" data-bs-target="#informacoesModal">Configurações</a></li>
+                      <li class="nav-item"><a class="dropdown-item" href="{% url 'sair' %}" title="Sair">Sair</a></li>
+                    </ul>
+                  </div>
+                </li>
+            </div>
+          </ul>
+        </div>
+        </div>
+      </nav>
+    </header>
+
+    
+    
+    <main class="wrapper">  
+
+        <!-- menu lateral -->
+        <aside class="sidebar sidebar_active" id="sidebar">
+            <ul class="list__sidebar">
+                <li class="links__sidebar">
+                  <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M28.2387 20.3258L31.6695 22.0412C32.1102 22.2615 32.1102 22.8903 31.6695 23.1106L16.5348 30.678C16.1982 30.8463 15.802 30.8463 15.4654 30.678L0.330602 23.1106C-0.110018 22.8903 -0.110019 22.2615 0.330601 22.0412L3.76148 20.3258L14.396 25.643C15.4058 26.1479 16.5944 26.1479 17.6042 25.643L28.2387 20.3258Z" fill="#1C6DD0"/>
+                    <path d="M15.4652 0.126227C15.8018 -0.0420753 16.198 -0.0420756 16.5346 0.126226L31.6694 7.69361C32.11 7.91392 32.11 8.54271 31.6694 8.76302L16.5346 16.3304C16.198 16.4987 15.8018 16.4987 15.4652 16.3304L0.330466 8.76302C-0.110155 8.54271 -0.110156 7.91392 0.330465 7.69361L15.4652 0.126227Z" fill="#1C6DD0"/>
+                    <path d="M28.2387 13.152L31.6695 14.8674C32.1102 15.0877 32.1102 15.7165 31.6695 15.9368L16.5348 23.5042C16.1982 23.6725 15.802 23.6725 15.4654 23.5042L0.330602 15.9368C-0.110018 15.7165 -0.110019 15.0877 0.330601 14.8674L3.76148 13.152L14.396 18.4692C15.4058 18.9741 16.5944 18.9741 17.6042 18.4692L28.2387 13.152Z" fill="#1C6DD0"/>
+                  </svg>
+                  <a class="ps-2 text-decoration-none" aria-current="page" href="{% url 'listagem_tarefas' %}" aria-label="Lista de tarefas">Minhas Tarefas</a>
+                </li>
+                
+                <li class="links__sidebar">
+                  <svg width="24" height="24" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30.6859 21.4313L30.2387 21.2077L29.7914 21.4313L19.157 26.7486C18.4287 27.1127 17.5715 27.1127 16.8432 26.7486L6.20869 21.4313L5.76148 21.2077L5.31426 21.4313L1.88339 23.1468C0.705716 23.7356 0.705723 25.4162 1.88339 26.005L17.0182 33.5724C17.6363 33.8815 18.3639 33.8815 18.982 33.5724L34.1167 26.005C35.2944 25.4162 35.2944 23.7356 34.1167 23.1468L30.6859 21.4313ZM30.6859 14.2575L30.2387 14.0339L29.7914 14.2575L19.157 19.5748C18.4287 19.9389 17.5715 19.9389 16.8432 19.5748L6.20869 14.2575L5.76148 14.0339L5.31426 14.2575L1.88339 15.973C0.705717 16.5618 0.705722 18.2424 1.88339 18.8312L17.0182 26.3986C17.6363 26.7077 18.3639 26.7077 18.982 26.3986L34.1167 18.8312C35.2944 18.2424 35.2944 16.5618 34.1167 15.973L30.6859 14.2575ZM34.1166 8.79918L18.9818 1.2318C18.3637 0.922733 17.6361 0.922734 17.018 1.2318L1.88325 8.79918C0.705579 9.38802 0.705586 11.0686 1.88325 11.6574L17.018 19.2248C17.6361 19.5339 18.3637 19.5339 18.9818 19.2248L34.1166 11.6574C35.2943 11.0686 35.2943 9.38801 34.1166 8.79918Z" fill="white" stroke="#1C6DD0" stroke-width="2"/>
+                  </svg>
+                  <a class="ps-2 text-decoration-none" href="{% url 'listagem_tarefas_concluidas' %}" aria-label="Lista de tarefas concluidas">Tarefas concluidas</a>
+                </li>
+                <li class="links__sidebar">
+                  <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M28 0H4C1.79086 0 0 1.79086 0 4V28C0 30.2091 1.79086 32 4 32H28C30.2091 32 32 30.2091 32 28V4C32 1.79086 30.2091 0 28 0ZM2 7.71429C2 6.76751 2.89543 6 4 6H28C29.1046 6 30 6.76751 30 7.71429V28.2857C30 29.2325 29.1046 30 28 30H4C2.89543 30 2 29.2325 2 28.2857V7.71429Z" fill="#1C6DD0"/>
+                    <path d="M13 14C14.1046 14 15 13.1046 15 12C15 10.8954 14.1046 10 13 10C11.8954 10 11 10.8954 11 12C11 13.1046 11.8954 14 13 14Z" fill="#1C6DD0"/>
+                    <path d="M19 14C20.1046 14 21 13.1046 21 12C21 10.8954 20.1046 10 19 10C17.8954 10 17 10.8954 17 12C17 13.1046 17.8954 14 19 14Z" fill="#1C6DD0"/>
+                    <path d="M25 14C26.1046 14 27 13.1046 27 12C27 10.8954 26.1046 10 25 10C23.8954 10 23 10.8954 23 12C23 13.1046 23.8954 14 25 14Z" fill="#1C6DD0"/>
+                    <path d="M7 20C8.10457 20 9 19.1046 9 18C9 16.8954 8.10457 16 7 16C5.89543 16 5 16.8954 5 18C5 19.1046 5.89543 20 7 20Z" fill="#1C6DD0"/>
+                    <path d="M13 20C14.1046 20 15 19.1046 15 18C15 16.8954 14.1046 16 13 16C11.8954 16 11 16.8954 11 18C11 19.1046 11.8954 20 13 20Z" fill="#1C6DD0"/>
+                    <path d="M19 20C20.1046 20 21 19.1046 21 18C21 16.8954 20.1046 16 19 16C17.8954 16 17 16.8954 17 18C17 19.1046 17.8954 20 19 20Z" fill="#1C6DD0"/>
+                    <path d="M25 20C26.1046 20 27 19.1046 27 18C27 16.8954 26.1046 16 25 16C23.8954 16 23 16.8954 23 18C23 19.1046 23.8954 20 25 20Z" fill="#1C6DD0"/>
+                    <path d="M7 26C8.10457 26 9 25.1046 9 24C9 22.8954 8.10457 22 7 22C5.89543 22 5 22.8954 5 24C5 25.1046 5.89543 26 7 26Z" fill="#1C6DD0"/>
+                    <path d="M13 26C14.1046 26 15 25.1046 15 24C15 22.8954 14.1046 22 13 22C11.8954 22 11 22.8954 11 24C11 25.1046 11.8954 26 13 26Z" fill="#1C6DD0"/>
+                    <path d="M19 26C20.1046 26 21 25.1046 21 24C21 22.8954 20.1046 22 19 22C17.8954 22 17 22.8954 17 24C17 25.1046 17.8954 26 19 26Z" fill="#1C6DD0"/>
+                  </svg>
+                  <a class="links__sidebar ps-2 text-decoration-none" aria-current="page"  href="#" aria-label="Lista de Calendário" title="calendario" data-bs-toggle="modal" data-bs-target="#calendarioModal">Calendário</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- conteudo da página -->
+        <div class="content_page_scroll ps-5 pe-5" id="content__page">
+
+          <!-- bloco de conteudo(raiz) -->
+          {% block content %}{% endblock content %}
+
+          <!-- Include adicionar tarefa -->
+          {% include 'modal-adicionar-tarefa.html' %}
+          <!-- Include Informações de perfil -->
+          {% include 'modal-informacoes-perfil.html' %}
+
+          
+        </div>
+      </main>
+      <!-- js bootstrap 5 Bundle + Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+      
+      <script src="{% static 'js/toast.js' %}"></script>
+      <script src="{% static 'js/sidebar.js' %}"></script>
+
+    </body>
+</html>
