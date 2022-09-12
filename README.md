@@ -38,18 +38,18 @@ Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Fo
 
 - *Passo 1* - Abra a pasta da aplicação no PyCharm.
 - *Passo 2* - Instale os packages ``mysqlclient`` e ``django`` via "python packages" na barra inferior da IDE.
-- *Passo 3* - Crie um banco de dados MySQL para a aplicação.
+- *Passo 3* - Crie um banco de dados PostgreSQL para a aplicação.
 - *Passo 4* - Abra o arquivo ``settings.py`` e em ``DATABASES`` configure: 
 
 ```commandline
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Nome do BD criado',
-        'USER': 'Usuario do BD criado',
-        'PASSWORD': 'Senha do BD criado',
-        'HOST': 'Hospedagem',
-        'PORT': 'Porta'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME', ''),
+        'USER': os.environ.get('DB_USER', ''),
+        'PASSWORD': os.environ.get('DB_PASS', ''),
+        'HOST': '',
+        'PORT': '',
     }
 }
 ```
