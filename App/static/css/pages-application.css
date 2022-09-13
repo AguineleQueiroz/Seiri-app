@@ -89,9 +89,15 @@ header {
 
 .links__sidebar {
   list-style: none;
-  padding: 0.7rem 1rem;
-  border-radius: 0.5rem 0 0 0.5rem;
+  padding: .7rem 1rem;
+  border-radius: .5rem 0 0 .5rem;
+  width: 250px;
 }
+
+.links__sidebar:hover {
+  background-color: var(--white-color);
+}
+
 
 /* conteudo scrollable */
 .content_page_scroll {
@@ -280,14 +286,6 @@ form > button {
   height: 10rem;
   width: 10rem;
   background-color: var(--blue-color);
-}
-
-.links__sidebar:hover {
-  background-color: var(--white-color);
-}
-
-.links__sidebar:focus {
-  background-color: var(--white-color);
 }
 
 .dropdown-toggle::after {

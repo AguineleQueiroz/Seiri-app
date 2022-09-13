@@ -16,3 +16,11 @@ function toggleSidebar() {
 }
 
 btn__menu.addEventListener('click', toggleSidebar);
+
+const lista = document.querySelectorAll('.links__sidebar');
+lista.forEach(item => {
+    item.onclick = () => {
+        lista.forEach(item => item.classList.remove('active'));
+        item.classList.add('active');
+    }
+})
