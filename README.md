@@ -33,12 +33,12 @@ Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Fo
 * CSS
 * Bootstrap 5
 * Python - Framework Django
-* MySQL - Banco de Dados Relacional
+* PostgreSQL - Banco de Dados
 
 ### Processo de Execução da Aplicação
 
 - *Passo 1* - Abra a pasta da aplicação no PyCharm.
-- *Passo 2* - Instale os packages ``mysqlclient`` e ``django`` via "python packages" na barra inferior da IDE.
+- *Passo 2* - Instale os packages ``psycopg2`` e ``django`` via "python packages" na barra inferior da IDE.
 - *Passo 3* - Crie um banco de dados PostgreSQL para a aplicação.
 - *Passo 4* - Abra o arquivo ``settings.py`` e em ``DATABASES`` configure: 
 
