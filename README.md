@@ -23,7 +23,7 @@ Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Fo
 ### Requisitos
 
 * [ Django]( https://www.djangoproject.com/) - Framework Python 
-* [ mysqlclient]( https://pypi.org/project/mysqlclient/) - Cliente MySQL (Banco de Dados)  
+* [ psycopg2](https://pypi.org/project/psycopg2/) -Banco de Dados
 * [ pycharm]( https://www.jetbrains.com/pt-br/pycharm/download/) - IDE (Ambiente de Desenvolvimento)  
 * Outros requisitos se encontram listados no arquivo ``requirements.txt`` neste repositório.
 
