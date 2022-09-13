@@ -7,6 +7,7 @@ Mucuri - UFVJM - Campus JK. O intuito era desenvolver uma aplicação que implem
 Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Foi uma ótima experiência e sempre podemos dar uma incrementada, não é mesmo?! :sunglasses:        
 
 ![landing-page](https://user-images.githubusercontent.com/66737248/188193685-d6b3ee30-eae8-4a57-bd83-d219d50308d6.png)
+![home](https://user-images.githubusercontent.com/66737248/189916688-53dea80c-579c-4805-9068-e20f190f9ed5.png)
 
 ### Funcionalidades da Aplicação
 - [x] Login e Logout
