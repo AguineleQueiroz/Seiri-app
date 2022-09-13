@@ -3,7 +3,7 @@
 Projeto prático desenvolvido para a disciplina de engenharia web do curso 
 Sistemas de Informação da Universidade Federal dos Vales do Jequitinhonha 
 e 
-Mucuri - UFVJM - Campus JK. O intuito era desenvolver uma aplicação que implementasse alguns dos conceitos da disciplina. O que foi um desafio! Muitos não foram implementados, principalmente devido a minha pouca experiência com o framework Django. O projeto estético da aplicação pode ser conferido neste [link](https://www.figma.com/file/pRKXLROwfJH8XkU3K8Hm7n/eng-web?node-id=1%3A4) para o figma.
+Mucuri - UFVJM - Campus JK. O intuito era desenvolver uma aplicação que implementasse alguns dos conceitos da disciplina. O que foi um desafio! Muitos não foram implementados, principalmente devido a minha pouca experiência com o framework Django. O projeto estético da aplicação pode ser conferido neste [link](https://www.figma.com/file/pRKXLROwfJH8XkU3K8Hm7n/eng-web?node-id=1%3A4), além da possibilidade de testes de funcionalidades da aplicação neste  [link](https://seiri-app.herokuapp.com/) do sistema no heroku.
 Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Foi uma ótima experiência e sempre podemos dar uma incrementada, não é mesmo?! :sunglasses:        
 
 ![landing-page](https://user-images.githubusercontent.com/66737248/188193685-d6b3ee30-eae8-4a57-bd83-d219d50308d6.png)
