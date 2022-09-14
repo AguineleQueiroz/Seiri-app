@@ -17,10 +17,18 @@ function toggleSidebar() {
 
 btn__menu.addEventListener('click', toggleSidebar);
 
+
+/* color link sidebar - background active */
 const lista = document.querySelectorAll('.links__sidebar');
-lista.forEach(item => {
-    item.onclick = () => {
-        lista.forEach(item => item.classList.remove('active'));
-        item.classList.add('active');
-    }
+
+function linkAtivo() {
+    lista.forEach((link) => {
+        link.classList.remove('active');
+    })
+
+    this.classList.add('active');
+}
+
+lista.forEach((elemento) => {
+    elemento.addEventListener('click', setInterval(linkAtivo, 2000))
 })

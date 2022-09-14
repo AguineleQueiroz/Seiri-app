@@ -83,21 +83,35 @@ header {
 }
 
 .list__sidebar {
-  padding-top: 2rem;
-  padding-left: 2.8rem;
+  padding: 2rem 0;
+  padding-left: 2.6rem;
+  height: 100%;
+  width: 100%;
 }
 
 .links__sidebar {
   list-style: none;
-  padding: .7rem 1rem;
   border-radius: .5rem 0 0 .5rem;
-  width: 250px;
+  margin: .5rem 0;
 }
 
 .links__sidebar:hover {
   background-color: var(--white-color);
 }
 
+.links{
+  display: block;
+  padding: .7rem 1rem;
+  border-radius: .5rem 0 0 .5rem;
+}
+
+span:visited{
+  color: var(--black-light-color);
+}
+
+.links__sidebar.active{
+  background-color: var(--white-color);
+}
 
 /* conteudo scrollable */
 .content_page_scroll {
