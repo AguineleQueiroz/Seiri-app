@@ -9,6 +9,10 @@ Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Fo
 ![landing-page](https://user-images.githubusercontent.com/66737248/188193685-d6b3ee30-eae8-4a57-bd83-d219d50308d6.png)
 ![home](https://user-images.githubusercontent.com/66737248/189916688-53dea80c-579c-4805-9068-e20f190f9ed5.png)
 
+### Status do Projeto
+
+O projeto pode ser executado. Entretanto, há alguns requisitos que não foram ainda implementados.
+
 ### Funcionalidades da Aplicação
 - [x] Login e Logout
 - [x] Cadastro de usuários
