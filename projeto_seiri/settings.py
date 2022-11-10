@@ -66,9 +66,9 @@ WSGI_APPLICATION = 'projeto_seiri.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'seiridatabase'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', '@Anime067a1'),
+        'NAME': os.environ.get('DB_NAME', 'nomeBD'),
+        'USER': os.environ.get('DB_USER', 'usuarioBD'),
+        'PASSWORD': os.environ.get('DB_PASS', 'senha'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
