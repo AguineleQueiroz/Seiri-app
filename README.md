@@ -21,7 +21,8 @@ O projeto pode ser executado. Entretanto, há alguns requisitos que não foram a
 - [x] Edição de tarefas (:warning: Apesar de persistir a data de forma correta no BD, a mesma não é retornada no modal de edição. :relieved:)
 - [x] Remoção de tarefas
 - [x] Conclusão de tarefas
-- [x] Listagem de tarefas concluídas  
+- [x] Listagem de tarefas concluídas 
+- [ ] Alterar senha (:warning: Funcionalidade ainda a ser implementada. :relieved:)
   
   
 ### Requisitos
