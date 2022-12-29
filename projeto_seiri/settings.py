@@ -122,3 +122,5 @@ DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 
 django_heroku.settings(locals())
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-b62d.up.railway.app/']
