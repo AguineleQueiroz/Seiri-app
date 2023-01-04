@@ -11,7 +11,10 @@ Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Fo
 
 ### Status do Projeto
 
+[![Status Parcialmento Completo](https://img.shields.io/badge/STATUS-Parcialmente_Completo-yellow?style=for-the-badge)]()
+
 O projeto pode ser executado. Entretanto, há alguns requisitos que não foram ainda implementados.
+
 
 ### Funcionalidades da Aplicação
 - [x] Login e Logout
