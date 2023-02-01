@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
 from App.models import Tarefa, TarefasConcluidas
 from django.http import HttpResponseRedirect
@@ -28,14 +29,14 @@ def cadastrar(request):
             messages.success(request, f'Bem vindo, {user.get_username()}!')
             return HttpResponseRedirect("listagem_tarefas")
         else:
-            request.session['register_error'] = 1 # 1 == True
+            request.session['register_error'] = 1  # 1 == True
     return render(request, "register-page.html", {"formulario_usuario": formulario_usuario})
 
 
-#login de usuário
+# login de usuário
 def entrar(request):
     formulario_login = FormLogin(request.POST or None)
-    
+
     if formulario_login.is_valid():
 
         username = formulario_login.cleaned_data.get("username")
@@ -48,48 +49,64 @@ def entrar(request):
             return HttpResponseRedirect("listagem_tarefas")
         else:
             messages.error(request, 'Usuário ou senha inválido!')
-            request.session['invalid_user'] = 1 # 1 == True
+            request.session['invalid_user'] = 1  # 1 == True
     return render(request, "login-page.html", {"formulario_login": formulario_login})
 
 # logout
+
+
 @login_required()
 def sair(request):
     logout(request)
     return HttpResponseRedirect("entrar")
 
 # informações de perfil
+
+
 def perfil_usuario(request):
     if request.method == 'GET':
         return render(request, 'modal-informacoes-perfil.html')
 
 # alterar senha de usuario
+
+
 def alterar_senha(request):
     pass
 
 # homepage
+
+
 def home(request):
     return render(request, 'promocional-page.html')
 
 # pagina_principal
+
+
 @login_required()
 def listagem_tarefas(request):
-    lista_tarefas = Tarefa.objects.all().filter(usuario = request.user).order_by('data')
+    lista_tarefas = Tarefa.objects.all().filter(
+        usuario=request.user).order_by('data')
     return render(request, 'lista-tarefas.html', {"tarefas": lista_tarefas})
 
 # pagina_principal
+
+
 @login_required()
 def listagem_tarefas_concluidas(request):
-    lista_tarefas_concluidas = TarefasConcluidas.objects.all().filter(usuario = request.user).order_by('data')
+    lista_tarefas_concluidas = TarefasConcluidas.objects.all().filter(
+        usuario=request.user).order_by('data')
     return render(request, 'tarefas-concluidas.html', {"tarefas_concluidas": lista_tarefas_concluidas})
 
 # Adicionar tarefa
+
+
 @login_required()
 def adicionar_tarefa(request):
     if request.method == "POST":
         if request.POST.get('tarefa') \
-            and request.POST.get('descricao') \
-            and request.POST.get('data') \
-            or request.POST.get('prioridade'):
+                and request.POST.get('descricao') \
+                and request.POST.get('data') \
+                or request.POST.get('prioridade'):
             tarefa = Tarefa()
             tarefa.tarefa = request.POST.get('tarefa')
             tarefa.descricao = request.POST.get('descricao')
@@ -105,20 +122,28 @@ def adicionar_tarefa(request):
         return render(request, 'modal-adicionar-tarefa.html')
 
 # Visualizar tarefa individualmente
+
+
 @login_required()
 def tarefa(request, tarefa_id):
     tarefa = Tarefa.objects.get(
-        id = tarefa_id
+        id=tarefa_id
     )
     if tarefa != None:
         return render(request, "modal-editar-tarefa.html", {'tarefa': tarefa})
 
 
-# Editar tarefa
+def formatDate(value):
+    data = datetime.strptime(value, '%d de %B de %Y')
+    data_formatada = data.strftime('%d/%m/%Y')
+    return data_formatada
+
+
+
 @login_required()
 def editar_tarefa(request):
     if request.method == "POST":
-        tarefa = Tarefa.objects.get(id = request.POST.get('id'))
+        tarefa = Tarefa.objects.get(id=request.POST.get('id'))
         if tarefa != None:
             tarefa.tarefa = request.POST.get('tarefa')
             tarefa.descricao = request.POST.get('descricao')
@@ -132,23 +157,27 @@ def editar_tarefa(request):
 # Remover tarefa
 @login_required()
 def remover_tarefa(request, tarefa_id):
-    tarefa = Tarefa.objects.get( id = tarefa_id )
+    tarefa = Tarefa.objects.get(id=tarefa_id)
     tarefa.delete()
     messages.success(request, 'Tarefa removida com sucesso!')
     return redirect('listagem_tarefas')
 
 # Remover tarefa
+
+
 @login_required()
 def remover_tarefa_concluida(request, tarefa_id):
-    tarefa_concluida = TarefasConcluidas.objects.get( id = tarefa_id )
+    tarefa_concluida = TarefasConcluidas.objects.get(id=tarefa_id)
     tarefa_concluida.delete()
     messages.success(request, 'Tarefa removida com sucesso!')
     return redirect('listagem_tarefas_concluidas')
 
 # Concluir tarefa
+
+
 @login_required()
 def concluir_tarefa(request, tarefa_id):
-    tarefa = get_object_or_404( Tarefa, id = tarefa_id )
+    tarefa = get_object_or_404(Tarefa, id=tarefa_id)
 
     tarefa_concluida = TarefasConcluidas()
 
@@ -166,9 +195,11 @@ def concluir_tarefa(request, tarefa_id):
     return redirect('listagem_tarefas_concluidas')
 
 # Desfazer conclusão
+
+
 @login_required()
 def desfazer_conclusao(request, tarefa_id):
-    tarefa_concluida = get_object_or_404( TarefasConcluidas, id = tarefa_id )
+    tarefa_concluida = get_object_or_404(TarefasConcluidas, id=tarefa_id)
 
     tarefa = Tarefa()
 

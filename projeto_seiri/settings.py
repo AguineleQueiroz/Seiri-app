@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-_l+1tw$g8#w)%@=j(!4(c4!sr3-&uaj+(v*7n#-xjbzmq*4_i(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # App definition
@@ -66,9 +66,9 @@ WSGI_APPLICATION = 'projeto_seiri.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'nomeBD'),
-        'USER': os.environ.get('DB_USER', 'usuarioBD'),
-        'PASSWORD': os.environ.get('DB_PASS', 'senha'),
+        'NAME': os.environ.get('DB_NAME', 'postgres'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASS', 'ohia098'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -99,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

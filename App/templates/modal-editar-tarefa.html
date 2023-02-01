@@ -9,14 +9,18 @@
 <!-- Form action -->
 {% block action %} action="/editar_tarefa" {% endblock action %}
 
-
 <!-- Botão no modal de edição -->
 {% block btn-action %} Salvar Alterações {% endblock btn-action %}
 
-
 <!--+++++++++++++++++++++ Inputs do form +++++++++++++++++++++++-->
 {% block value-id %}
-    <input type="hidden" class="form-control" name="id" value="{{tarefa.id}}" readonly>
+<input
+  type="hidden"
+  class="form-control"
+  name="id"
+  value="{{tarefa.id}}"
+  readonly
+/>
 {% endblock value-id %}
 <!--Titulo da tarefa -->
 {% block value-tarefa %} value="{{tarefa.tarefa}}" {% endblock value-tarefa %}
@@ -30,4 +34,4 @@
 {% endblock option %}
 
 <!--data -->
-{% block value-data %}value="{{tarefa.Data}}"{% endblock value-data %}
+{% block value-data %}value="{{tarefa.data}}"{% endblock value-data %}
