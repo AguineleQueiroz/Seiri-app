@@ -7,12 +7,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import SetPasswordForm
 from App.form_usuario import FormLogin, FormCadastro
 from django.contrib import messages
-
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import requires_csrf_token
 
 User = get_user_model()
 
 
 # Cadastrar usuário
+@csrf_exempt
+@requires_csrf_token
 def cadastrar(request):
     formulario_usuario = FormCadastro(request.POST or None)
     if formulario_usuario.is_valid():
@@ -33,7 +36,8 @@ def cadastrar(request):
     return render(request, "register-page.html", {"formulario_usuario": formulario_usuario})
 
 
-# login de usuário
+@csrf_exempt
+@requires_csrf_token
 def entrar(request):
     formulario_login = FormLogin(request.POST or None)
 
@@ -62,7 +66,8 @@ def sair(request):
 
 # informações de perfil
 
-
+@csrf_exempt
+@requires_csrf_token
 def perfil_usuario(request):
     if request.method == 'GET':
         return render(request, 'modal-informacoes-perfil.html')
@@ -75,13 +80,15 @@ def alterar_senha(request):
 
 # homepage
 
-
+@csrf_exempt
+@requires_csrf_token
 def home(request):
     return render(request, 'promocional-page.html')
 
 # pagina_principal
 
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def listagem_tarefas(request):
     lista_tarefas = Tarefa.objects.all().filter(
@@ -90,7 +97,8 @@ def listagem_tarefas(request):
 
 # pagina_principal
 
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def listagem_tarefas_concluidas(request):
     lista_tarefas_concluidas = TarefasConcluidas.objects.all().filter(
@@ -99,7 +107,8 @@ def listagem_tarefas_concluidas(request):
 
 # Adicionar tarefa
 
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def adicionar_tarefa(request):
     if request.method == "POST":
@@ -123,7 +132,8 @@ def adicionar_tarefa(request):
 
 # Visualizar tarefa individualmente
 
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def tarefa(request, tarefa_id):
     tarefa = Tarefa.objects.get(
@@ -133,13 +143,8 @@ def tarefa(request, tarefa_id):
         return render(request, "modal-editar-tarefa.html", {'tarefa': tarefa})
 
 
-def formatDate(value):
-    data = datetime.strptime(value, '%d de %B de %Y')
-    data_formatada = data.strftime('%d/%m/%Y')
-    return data_formatada
-
-
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def editar_tarefa(request):
     if request.method == "POST":
@@ -154,7 +159,8 @@ def editar_tarefa(request):
             return HttpResponseRedirect('listagem_tarefas')
 
 
-# Remover tarefa
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def remover_tarefa(request, tarefa_id):
     tarefa = Tarefa.objects.get(id=tarefa_id)
@@ -164,7 +170,8 @@ def remover_tarefa(request, tarefa_id):
 
 # Remover tarefa
 
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def remover_tarefa_concluida(request, tarefa_id):
     tarefa_concluida = TarefasConcluidas.objects.get(id=tarefa_id)
@@ -174,7 +181,8 @@ def remover_tarefa_concluida(request, tarefa_id):
 
 # Concluir tarefa
 
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def concluir_tarefa(request, tarefa_id):
     tarefa = get_object_or_404(Tarefa, id=tarefa_id)
@@ -194,9 +202,9 @@ def concluir_tarefa(request, tarefa_id):
 
     return redirect('listagem_tarefas_concluidas')
 
-# Desfazer conclusão
 
-
+@csrf_exempt
+@requires_csrf_token
 @login_required()
 def desfazer_conclusao(request, tarefa_id):
     tarefa_concluida = get_object_or_404(TarefasConcluidas, id=tarefa_id)
@@ -215,8 +223,3 @@ def desfazer_conclusao(request, tarefa_id):
     tarefa_concluida.delete()
 
     return redirect('listagem_tarefas')
-
-# mostrar calendario
-# @login_required()
-# def mostrar_calendario(request):
-#     return render(request, 'modal-calendario.html')
