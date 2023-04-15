@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Seiri - Tudo em Ordem!</title>
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'img/aplicacao/logo.svg' %}" type="image/x-icon">
 
     <!-- CSS bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -29,7 +32,7 @@
                 {% endif %}
             {% endfor %}
             
-            <div class="form-box" style="margin-bottom: 10rem;">
+            <div class="form-box" style="margin-bottom: 15rem;">
                 <div class="img-user">
                     <a href="{% url 'home' %}"><img class="img-fluid" src="{% static 'img/aplicacao/logo.svg' %}" alt="logomarca"></a>
                 </div>
@@ -37,22 +40,26 @@
                 <form class="form" method="post" action="{% url 'cadastrar'%}">
                     {% csrf_token %}
                     
-                    <div class="mb-3 form-group">
+                    <div class="mb-2 form-group">
+                        <label for="name">Name </label>
                         {{formulario_usuario.username.errors}}
                         {{formulario_usuario.username| addclass:'form-control'}}
                     </div>
 
-                    <div class="mb-3 form-group">
+                    <div class="mb-2 form-group">
+                        <label for="email">Email </label>
                         {{formulario_usuario.email.errors}}
                         {{formulario_usuario.email| addclass:'form-control'}}
                         <div id="emailHelp" class="form-text" style="font-size: 10px; color: #15519a;">Nunca compartilharemos seu e-mail com mais ninguém.</div>
                     </div>
                     
-                    <div class="mb-3 form-group">
+                    <div class="mb-2 form-group">
+                        <label for="password1">Password </label>
                         {{formulario_usuario.password1.errors}}
                         {{formulario_usuario.password1| addclass:'form-control'}}
                     </div>
-                    <div class="mb-3 form-group">
+                    <div class="mb-2 form-group">
+                        <label for="password2">Confirm Password </label>
                         {{formulario_usuario.password2.errors}}
                         {{formulario_usuario.password2| addclass:'form-control'}}
                     </div>

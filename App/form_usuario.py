@@ -8,6 +8,7 @@ User = get_user_model()
 
 class FormCadastro(forms.Form):
     username = forms.CharField(
+        label='Name',
         widget=forms.TextInput(
         attrs={
         "class": "form-control",
