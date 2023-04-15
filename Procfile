@@ -1,1 +1,1 @@
-web: gunicorn seiri-app.wsgi
+web: gunicorn projeto_seiri.wsgi

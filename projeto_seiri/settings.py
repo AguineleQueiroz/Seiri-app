@@ -65,7 +65,14 @@ WSGI_APPLICATION = 'projeto_seiri.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1000),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '1X56y3TVPkW7GjBgvLzz',
+        'HOST': 'containers-us-west-14.railway.app',
+        'PORT': '5791',
+    }
 }
 
 
@@ -113,8 +120,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
-
-
-django_heroku.settings(locals())
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-b62d.up.railway.app/']
