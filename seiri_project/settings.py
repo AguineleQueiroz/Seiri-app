@@ -65,10 +65,10 @@ WSGI_APPLICATION = 'seiri_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ctsqlcqg',
-        'USER': 'ctsqlcqg',
-        'PASSWORD': 'gKMF5zoaLQKqBiOqV0p5LupBI8bvTJcu',
-        'HOST': 'babar.db.elephantsql.com',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '5432',
     }
 }
