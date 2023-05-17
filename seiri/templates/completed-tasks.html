@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+<!-- Pagina de conteudo - pagina de tarefas -->
+{% block content %}
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center pt-4 mt-5">
+    {% load static %}
+
+    <!-- Mensagens backend -->
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="toast-body bg-sucesso position-fixed p-3" id="toast" style="z-index: 1000; top: 55px; border-radius: 4px;">
+                {{message}}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% for c_task in completed_task %}
+    <div class="card border-0 bg-light w-100 my-3">
+        <div class="card-body row col-sm-12 row-lg justify-content-between">
+            <div class="col-lg-9 col-md-10 col-sm align-items-center justify-content-between mb-3">
+                <h5 class="fs-6">{{c_task.task}}</h5>
+                <p class="card-text text-muted" style="font-size: .875rem;">{{c_task.description}}</p>
+                <div class="d-flex flex-column flex-sm-row gap-2 align-self-end">
+                    <div class="d-flex">
+                        <div class="data-tarefa  me-2 mb-0 d-flex align-self-center">
+                            <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.2435 0H2.35754C1.07937 0 0.0432129 0.89543 0.0432129 2V14C0.0432129 15.1046 1.07937 16 2.35754 16H16.2435C17.5217 16 18.5578 15.1046 18.5578 14V2C18.5578 0.89543 17.5217 0 16.2435 0ZM1.20038 3.85714C1.20038 3.38376 1.71846 3 2.35754 3H16.2435C16.8826 3 17.4007 3.38376 17.4007 3.85714V14.1429C17.4007 14.6162 16.8826 15 16.2435 15H2.35754C1.71846 15 1.20038 14.6162 1.20038 14.1429V3.85714Z" fill="#1C6DD0"/>
+                                <path d="M7.56469 7C8.20377 7 8.72185 6.55228 8.72185 6C8.72185 5.44772 8.20377 5 7.56469 5C6.9256 5 6.40752 5.44772 6.40752 6C6.40752 6.55228 6.9256 7 7.56469 7Z" fill="#1C6DD0"/>
+                                <path d="M11.0362 7C11.6753 7 12.1933 6.55228 12.1933 6C12.1933 5.44772 11.6753 5 11.0362 5C10.3971 5 9.87901 5.44772 9.87901 6C9.87901 6.55228 10.3971 7 11.0362 7Z" fill="#1C6DD0"/>
+                                <path d="M14.5077 7C15.1467 7 15.6648 6.55228 15.6648 6C15.6648 5.44772 15.1467 5 14.5077 5C13.8686 5 13.3505 5.44772 13.3505 6C13.3505 6.55228 13.8686 7 14.5077 7Z" fill="#1C6DD0"/>
+                                <path d="M4.0932 10C4.73228 10 5.25036 9.55228 5.25036 9C5.25036 8.44772 4.73228 8 4.0932 8C3.45411 8 2.93604 8.44772 2.93604 9C2.93604 9.55228 3.45411 10 4.0932 10Z" fill="#1C6DD0"/>
+                                <path d="M7.56469 10C8.20377 10 8.72185 9.55228 8.72185 9C8.72185 8.44772 8.20377 8 7.56469 8C6.9256 8 6.40752 8.44772 6.40752 9C6.40752 9.55228 6.9256 10 7.56469 10Z" fill="#1C6DD0"/>
+                                <path d="M11.0362 10C11.6753 10 12.1933 9.55228 12.1933 9C12.1933 8.44772 11.6753 8 11.0362 8C10.3971 8 9.87901 8.44772 9.87901 9C9.87901 9.55228 10.3971 10 11.0362 10Z" fill="#1C6DD0"/>
+                                <path d="M14.5077 10C15.1467 10 15.6648 9.55228 15.6648 9C15.6648 8.44772 15.1467 8 14.5077 8C13.8686 8 13.3505 8.44772 13.3505 9C13.3505 9.55228 13.8686 10 14.5077 10Z" fill="#1C6DD0"/>
+                                <path d="M4.0932 13C4.73228 13 5.25036 12.5523 5.25036 12C5.25036 11.4477 4.73228 11 4.0932 11C3.45411 11 2.93604 11.4477 2.93604 12C2.93604 12.5523 3.45411 13 4.0932 13Z" fill="#1C6DD0"/>
+                                <path d="M7.56469 13C8.20377 13 8.72185 12.5523 8.72185 12C8.72185 11.4477 8.20377 11 7.56469 11C6.9256 11 6.40752 11.4477 6.40752 12C6.40752 12.5523 6.9256 13 7.56469 13Z" fill="#1C6DD0"/>
+                                <path d="M11.0362 13C11.6753 13 12.1933 12.5523 12.1933 12C12.1933 11.4477 11.6753 11 11.0362 11C10.3971 11 9.87901 11.4477 9.87901 12C9.87901 12.5523 10.3971 13 11.0362 13Z" fill="#1C6DD0"/>
+                            </svg>
+                        </div>
+                        <p class="data me-2 mb-0 mt-1">{{c_task.date_task}}</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="prioridade-tarefa  me-2 mb-0 mt-1">Prioridade: </p>
+                        <p class="prioridade mb-0 mt-1">{{c_task.priority_level}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-acao-tarefa col-lg-3  d-flex align-items-center flex-lg-row col-md-2 flex-md-column col-sm mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0">
+                <a href="/reverse_completion/{{c_task.id}}" class="card-link py-md-1 mx-lg-1 py-lg-0 m-md-2 m-lg-0 d-md-flex w-auto justify-content-md-end" title="desfazer conclusao" >
+                    <img src="{% static 'img/appstyle/desfazer.png' %}">
+                </a>
+                <a href="/delete_task_completed/{{c_task.id}}" class="card-link mx-lg-1 py-md-1 py-lg-0 m-md-2 m-lg-0 d-md-flex w-auto justify-content-md-end" title="Concluir tarefa">
+                    <img src="{% static 'img/appstyle/botao-excluir.png' %}">
+                </a>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}>

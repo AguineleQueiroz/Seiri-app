@@ -1,0 +1,51 @@
+
+<!-- Modal -->
+<div class="modal fade mt-5" {% block modal-id%} id="adicionarModal" {% endblock modal-id%} tabindex="-1" aria-labelledby="adicionarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="ModalLabel"> {% block modal-title %} Adicionar Tarefa {% endblock modal-title %}</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="border-0" {% block action %} action="/add" {% endblock action %} method="post" enctype="multipart/form-data" autocomplete="off" class="card p-3 mt-3 d-flex flex-column" >
+                {% csrf_token %}
+                <div class="modal-body">
+
+                    {% block value-id %}{% endblock value-id %}
+                    
+                    <!-- Titulo da tarefa -->
+                    <div class="input-group mb-3">
+                        <input type="text" maxlength="100" class="form-control" placeholder="Titulo da tarefa" name="task" required {% block value-task %}{% endblock value-task %}>
+                    </div>
+                    <!-- Descricao da tarefa -->
+                    <div class="input-group mb-3">
+                        <input type="text" maxlength="200" class="form-control" placeholder="Descrição" name="description" required {% block value-description %}{% endblock value-description %}>
+                    </div>
+                    <!-- Prioridade da tarefa -->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect" style="font-size: .8rem;">Prioridade</label>
+                        <select class="form-select form-control" name="priority_level" required>
+                            {% block option %}
+                            <option hidden class="fst-italic">Select</option>
+                            {% endblock option %}
+                            <option disabled></option>
+                            <option class="option-custom-font">High</option>
+                            <option class="option-custom-font">Normal</option>
+                            <option class="option-custom-font">Low</option>
+                        </select>
+                    </div>
+                    <!-- Data de expiração da tarefa -->
+                    <div class="input-group mb-3 input-group date" id="datepicker">
+                        <input type="date" class="form-control" name="date_task" required {% block value-date-task %}{% endblock value-date-task %}>
+                    </div>
+
+                    <!-- Botoes de ações -->
+                    <div class=" mt-4 w-100 d-flex justify-content-end">
+                        <a href="{% url 'show_tasks' %}" class="btn btn-cancelar mb-3" title="voltar">Cancelar</a>
+                        <button type="submit" class="btn btn-adicionar mb-3  ms-2">{% block btn-action %}Adicionar{% endblock btn-action %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="box-profile-info vh-100 p-5">
+    <div class="dados_usuario mt-5 bg-light p-5 rounded-1 w-50 m-auto">
+        <div class="foto-perfil mb-4 m-auto">
+            <img class="img-fluid" src="{% static 'img/appstyle/user.png' %}" alt="imagem de perfil">
+        </div>
+        <div class="dados bg-white rounded-1 p-2">
+            {% if request.user.is_authenticated %}
+                <div class="username d-flex align-items-center my-3 gap-3">
+                    <h5 class="fs-6">Nome de Usuário: </h5>
+                    <p class="fs-6 mb-2">{{ request.user.username }}</p>
+                </div>
+                <div class="email d-flex align-items-center my-3 gap-3">
+                    <h5 class="fs-6">Email: </h5>
+                    <p class="fs-6 mb-2">{{ request.user.email }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
