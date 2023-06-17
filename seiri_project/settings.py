@@ -65,10 +65,10 @@ WSGI_APPLICATION = 'seiri_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'NAME': 'seiri_v3',
+        'USER': 'aguinele',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -114,3 +114,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d',  # Formato padrão: Ano-Mês-Dia
+    '%d/%m/%Y',  # Formato: Dia/Mês/Ano
+    '%d-%m-%Y',  # Formato: Dia-Mês-Ano
+    '%m/%d/%Y',  # Formato: Mês/Dia/Ano
+    '%m-%d-%Y',  # Formato: Mês-Dia-Ano
+]

@@ -1,3 +1,4 @@
+from django.urls import reverse
 from seiri.models import Task, CompletedTasks
 from django.http import HttpResponseRedirect
 from seiri.user_form import LoginForm, RegisterForm
@@ -148,6 +149,7 @@ def completed_task(request, task_ID):
 def update_task(request):
     if request.method == "POST":
         task = Task.objects.get(id=request.POST.get('id'))
+        print("Objeto de Tarefa: ", task.date_task)
         if task != None:
             task.task = request.POST.get('task')
             task.description = request.POST.get('description')
@@ -155,7 +157,8 @@ def update_task(request):
             task.priority_level = request.POST.get('priority_level')
             task.save()
             messages.success(request, 'Task updated successfully!')
-            return HttpResponseRedirect('show_tasks')
+            return redirect(reverse('show_tasks'))
+    return render(request, 'update_task.html')
 
 
 @csrf_exempt
