@@ -6,7 +6,7 @@ from seiri import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.home, name="home"),
+    path('home', views.home, name="home"),
 
     path('login_usr', views.login_usr, name="login_usr"),
 
@@ -14,7 +14,7 @@ urlpatterns = [
     
     path('change_pswd', views.change_pswd, name="change_pswd"),
 
-    path('logout_usr', views.logout_usr, name="logout"),
+    path('logout_usr', views.logout_usr, name="logout_usr"),
 
     path('register_usr', views.register_usr, name="register_usr"),
 
