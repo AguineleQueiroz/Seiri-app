@@ -7,7 +7,7 @@
     <!-- Mensagens backend -->
     {% for message in messages %}
         {% if message.tags == 'success' %}
-            <div class="toast-body bg-sucesso position-fixed p-3 w-50" id="toast" style="z-index: 1000; top: 65px; border-radius: 4px;">
+            <div class="toast-body bg-sucesso position-fixed p-3 w-75" id="toast" style="z-index: 1000; top: 65px; border-radius: 4px;">
                 {{message}}
             </div>
         {% endif %}

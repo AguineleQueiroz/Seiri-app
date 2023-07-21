@@ -1,5 +1,7 @@
 {% load static %}
 {% load myfilters %}
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,41 +34,34 @@
                 {% endif %}
             {% endfor %}
             
-            <div class="form-box" style="margin-bottom: 15rem;">
+            <div class="form-box col-3" style="margin-bottom: 15rem;">
                 <div class="img-user">
                     <a href="{% url 'home' %}"><img class="img-fluid" src="{% static 'img/appstyle/logo.svg' %}" alt="logomarca"></a>
                 </div>
                 
-                <form class="form" method="post" action="{% url 'register_usr'%}">
+                <form class="form" method="post">
                     {% csrf_token %}
                     
-                    <div class="mb-2 form-group">
-                        <label for="name">Name </label>
-                        {{form_usr.username.errors}}
-                        {{form_usr.username| addclass:'form-control'}}
-                    </div>
-
-                    <div class="mb-2 form-group">
-                        <label for="email">Email </label>
-                        {{form_usr.email.errors}}
-                        {{form_usr.email| addclass:'form-control'}}
-                        <div id="emailHelp" class="form-text" style="font-size: 10px; color: #15519a;">
-                            Nunca compartilharemos seu e-mail com mais ninguém.
+                    <input type="hidden" name = "next" value="{{next}}">
+                    <div>                    
+                        {% for field in form %}
+                        <div>
+                            <div class="mt-2 d-flex flex-column">
+                                {{ field.label_tag }}
+                                {{ field|addclass:'form-control' }}
+                                {% if field.value or form.submitted %}
+                                    {% if field.errors %}                 
+                                        {% for error in field.errors %}
+                                            <p style="color:red;font-size:.75rem;margin-top:5px;margin-bottom:0px;">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    
-                    <div class="mb-2 form-group">
-                        <label for="password1">Password </label>
-                        {{form_usr.password1.errors}}
-                        {{form_usr.password1| addclass:'form-control'}}
-                    </div>
-                    <div class="mb-2 form-group">
-                        <label for="password2">Confirm Password </label>
-                        {{form_usr.password2.errors}}
-                        {{form_usr.password2| addclass:'form-control'}}
-                    </div>
+                    <button type="submit" class="btn btn-primary mt-4" value="register_usr">Cadastrar</button>
                 
-                    <button type="submit" class="btn btn-primary" value="register_usr">Cadastrar</button>
                 </form>
             </div>
         </div>

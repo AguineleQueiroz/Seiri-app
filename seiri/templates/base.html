@@ -1,5 +1,6 @@
 {% load static %}
-
+{% load myfilters %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -50,7 +51,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li class="nav-item"><a class="dropdown-item" href="{% url 'usr_profile' %}" title="Informações de perfil" data-bs-toggle="modal" data-bs-target="#informacoesModal">Configurações</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="{% url 'logout' %}" title="Sair">Sair</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="/accounts/logout" title="Sair">Sair</a></li>
                   </ul>
                 </div>
               </li>
@@ -122,7 +123,6 @@
 
           <!-- Include Informações de perfil -->
           {% include 'md-profile.html' %}
-
           
         </div>
       </main>

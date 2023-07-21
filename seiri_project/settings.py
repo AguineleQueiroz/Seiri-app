@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,8 +26,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'accounts',
     'seiri',
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -43,7 +50,7 @@ ROOT_URLCONF = 'seiri_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ 'templates' ],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,10 +72,10 @@ WSGI_APPLICATION = 'seiri_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'NAME': 'ctsqlcqg',
+        'USER': 'ctsqlcqg',
+        'PASSWORD': 'gKMF5zoaLQKqBiOqV0p5LupBI8bvTJcu',
+        'HOST': 'babar.db.elephantsql.com',
         'PORT': '5432',
     }
 }
@@ -114,3 +121,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d',  # Formato padrão: Ano-Mês-Dia
+    '%d/%m/%Y',  # Formato: Dia/Mês/Ano
+    '%d-%m-%Y',  # Formato: Dia-Mês-Ano
+    '%m/%d/%Y',  # Formato: Mês/Dia/Ano
+    '%m-%d-%Y',  # Formato: Mês-Dia-Ano
+]
+
+LOGIN_REDIRECT_URL = '/show_tasks'
+
+LOGOUT_REDIRECT_URL=  '/accounts/login'

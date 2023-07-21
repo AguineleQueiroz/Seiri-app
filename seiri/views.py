@@ -1,67 +1,15 @@
 from seiri.models import Task, CompletedTasks
 from django.http import HttpResponseRedirect
-from seiri.user_form import LoginForm, RegisterForm
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import requires_csrf_token
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import redirect
+from django.views.decorators.csrf import requires_csrf_token, csrf_exempt
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 User = get_user_model()
 
-
-@csrf_exempt
-@requires_csrf_token
-def register_usr(request):
-    form_usr = RegisterForm(request.POST or None)
-    if form_usr.is_valid():
-        username = form_usr.cleaned_data.get("username")
-        email = form_usr.cleaned_data.get("email")
-        password = form_usr.cleaned_data.get("password1")
-        password2 = form_usr.cleaned_data.get("password2")
-        try:
-            user = User.objects.create_user(username, email, password)
-        except:
-            user = None
-        if user != None:
-            login(request, user)
-            messages.success(request, f'Welcome, {user.get_username()}!')
-            return HttpResponseRedirect("show_tasks")
-        else:
-            request.session['register_error'] = 1
-    return render(request, "auth-register.html", {"form_usr": form_usr})
-
-
-@csrf_exempt
-@requires_csrf_token
-def login_usr(request):
-    login_form = LoginForm(request.POST or None)
-
-    if login_form.is_valid():
-
-        username = login_form.cleaned_data.get("username")
-        password = login_form.cleaned_data.get("password")
-        usr = authenticate(request, username=username, password=password)
-
-        if usr != None:
-            login(request, usr)
-            messages.success(request, f'Welcome, {usr.get_username()}!')
-            return HttpResponseRedirect("show_tasks")
-        else:
-            messages.error(request, 'Invalid user or password!')
-            request.session['invalid_user'] = 1
-    return render(request, "auth-login.html", {"login_form": login_form})
-
-
-
-
-@login_required()
-def logout_usr(request):
-    logout(request)
-    return HttpResponseRedirect('home')
 
 # informações de perfil
 @csrf_exempt
@@ -69,12 +17,6 @@ def logout_usr(request):
 def usr_profile(request):
     if request.method == 'GET':
         return render(request, 'profile.html')
-
-
-
-# alterar senha de user_owner_task
-def change_pswd(request):
-    pass
 
 # homepage
 @csrf_exempt

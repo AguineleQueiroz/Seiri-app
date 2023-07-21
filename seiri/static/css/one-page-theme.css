@@ -32,7 +32,7 @@ body{
 }
 
 .nav-link,
-btn-login{
+.btn-login{
     color: var(--black-light-color);
 }
 
@@ -55,10 +55,6 @@ btn-login{
     grid-template-columns: 100%!important;
     width: 100%!important;
     height: 50vh!important;
-}
-
-@media only screen and (min-width:576px) and (max-width: 600px){
-
 }
 
 

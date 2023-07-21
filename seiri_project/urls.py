@@ -1,22 +1,18 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from seiri import views
 
 urlpatterns = [
+    path('accounts/', include('accounts.urls')),
+
+    path('accounts/', include('django.contrib.auth.urls')),
+
     path('admin/', admin.site.urls),
 
-    path('home', views.home, name="home"),
-
-    path('login_usr', views.login_usr, name="login_usr"),
+    path('', views.home, name="home"),
 
     path('usr_profile', views.usr_profile, name="usr_profile"),
-    
-    path('change_pswd', views.change_pswd, name="change_pswd"),
-
-    path('logout_usr', views.logout_usr, name="logout"),
-
-    path('register_usr', views.register_usr, name="register_usr"),
 
     path('show_tasks', views.show_tasks, name="show_tasks"),
 

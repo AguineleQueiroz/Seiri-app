@@ -1,37 +1,51 @@
-{% extends 'md-add-task.html' %}
+<!-- Modal -->
+<div class="modal fade mt-5" {% block modal-id%} id="editarModal{{ task.pk }}" {% endblock modal-id%} tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="ModalLabel"> {% block modal-title %} Update Task {% endblock modal-title %}</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form class="border-0" {% block action %} action="/update_task" {% endblock action %} method="post" enctype="multipart/form-data" autocomplete="off" class="card p-3 mt-3 d-flex flex-column" >
+            {% csrf_token %}
+            <div class="modal-body">
 
-<!-- Modal ID -->
-{% block modal-id%} id="editarModal{{ task.pk }}" {% endblock modal-id%}
+              <input type="hidden" class="form-control" name="id" value="{{task.id}}" readonly/>
+              
+              <!-- Titulo da tarefa -->
+              <div class="input-group mb-3">
+                <input type="text" maxlength="100" class="form-control" placeholder="Titulo da tarefa" name="task" value="{{task.task}}">
+              </div>
+              <!-- Descricao da tarefa -->
+              <div class="input-group mb-3">
+                <input type="text" maxlength="200" class="form-control" placeholder="Descrição" name="description" value="{{task.description}}">
+              </div>
 
-<!-- Titulo do formulário no modal-->
-{% block modal-title %} Editar tarefa {% endblock modal-title %}
+              <!-- Prioridade da tarefa -->
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect" style="font-size: .8rem;">Prioridade</label>
+                <select class="form-select form-control" name="priority_level" required>
+                  <option hidden class="fst-italic">Select</option>
+                  <option disabled></option>
+                  <option class="option-custom-font" value="High" {% if task.priority_level == 'High' %}selected{% endif %}>High</option>
+                  <option class="option-custom-font" value="Normal" {% if task.priority_level == 'Normal' %}selected{% endif %}>Normal</option>
+                  <option class="option-custom-font" value="Low" {% if task.priority_level == 'Low' %}selected{% endif %}>Low</option>
+                </select>
+              </div>              
 
-<!-- Form action -->
-{% block action %} action="/update_task" {% endblock action %}
+              <!-- Data de expiração da tarefa -->
+              <div class="input-group mb-3 input-group date" id="datepicker">
+                <!-- <input type="date" class="form-control" name="date_task" value="{{task.date}}"> -->
+                <input type="date" class="form-control" name="date_task" value="{{task.date_task|date:'Y-m-d'}}">
+              </div>
 
-<!-- Botão no modal de edição -->
-{% block btn-action %} Salvar Alterações {% endblock btn-action %}
-
-<!--+++++++++++++++++++++ Inputs do form +++++++++++++++++++++++-->
-{% block value-id %}
-<input
-  type="hidden"
-  class="form-control"
-  name="id"
-  value="{{task.id}}"
-  readonly
-/>
-{% endblock value-id %}
-<!--Titulo da tarefa -->
-{% block value-task %} value="{{task.task}}" {% endblock value-task %}
-
-<!--Descricao -->
-{% block value-description %}value="{{task.description}}"{% endblock value-description %}
-
-<!--Prioridade-->
-{% block option %}
-<option>{{task.priority_level}}</option>
-{% endblock option %}
-
-<!--data -->
-{% block value-data %}value="{{task.date_task}}"{% endblock value-data %}
+              <!-- Botoes de ações -->
+              <div class=" mt-4 w-100 d-flex justify-content-end">
+                <a href="{% url 'show_tasks' %}" class="btn btn-cancelar mb-3" title="voltar">Cancel</a>
+                <button type="submit" class="btn btn-adicionar mb-3  ms-2">{% block btn-action %}Save{% endblock btn-action %}</button>
+              </div>
+            </div>
+          </form>
+      </div>
+  </div>
+</div>

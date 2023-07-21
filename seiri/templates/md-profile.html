@@ -10,56 +10,22 @@
             <form class="border-0" {% block action %} action="/perfil_usuario" {% endblock action %} method="GET" enctype="multipart/form-data" autocomplete="off" class="card p-3 mt-3 d-flex flex-column">
                 {% csrf_token %}
                 <div class="modal-body">
-                        {% if request.user.is_authenticated %}
-                            <!-- Nome do usuário -->
-                            <div class="mb-3">
-                                <label for="username">Nome</label>
-                                <input type="text" maxlength="30" class="username-info form-control bg-light" name="username" value="{{ request.user.username }}" readonly>
-                            </div>
-                            <!-- Email -->
-                            <div class="mb-3">
-                                <label for="email">E-mail</label>
-                                <input type="email" maxlength="45" class="email-info form-control bg-light" name="email" value="{{ request.user.email }}" readonly>
-                            </div>
-                        {% endif %}
-                        
-                        <!-- Botoes de ações -->
-                        <div class=" mt-4 w-100 d-flex justify-content-end">
-                            <a href="{% url 'change_pswd' %}" class="btn btn-cancelar mb-3" title="Alterar senha" data-bs-target="#alterarSenhaModal" data-bs-toggle="modal" data-bs-dismiss="modal">Alterar senha</a>
-                            <button type="submit" class="btn btn-danger mb-3  ms-2"><a href="#" class="nav-link">Excluir conta</a></button>
+                    {% if request.user.is_authenticated %}
+                        <!-- Nome do usuário -->
+                        <div class="mb-3">
+                            <label for="username">Nome</label>
+                            <input type="text" maxlength="30" class="username-info form-control bg-light" name="username" value="{{ request.user.username }}" readonly>
                         </div>
-                    </div>
-                </form>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade mt-5" {% block modal2-id%} id="alterarSenhaModal" {% endblock modal2-id%} tabindex="-1" aria-labelledby="alterarSenhaModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="ModalLabel"> {% block modal2-title %} Alterar senha {% endblock modal2-title %}</h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="border-0" {% block action2 %} action="/alterar_senha" {% endblock action2 %} method="POST" enctype="multipart/form-data" autocomplete="off" class="card p-3 mt-3 d-flex flex-column">
-                {% csrf_token %}
-                <div class="modal-body">
-                    <!-- Nome do usuário -->
-                    <div class="mb-3">
-                        <label for="username">Nova senha</label>
-                        <input type="password" maxlength="30" class="form-control" name="password" {% block value-newpassword %}{% endblock value-newpassword %}>
-                    </div>
-                    <!-- Email -->
-                    <div class="mb-3">
-                        <label for="password">Confirmar senha</label>
-                        <input type="password" maxlength="45" class="form-control" name="password" {% block value-new-password %}{% endblock value-new-password %}>
-                    </div>
-
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email">E-mail</label>
+                            <input type="email" maxlength="45" class="email-info form-control bg-light" name="email" value="{{ request.user.email }}" readonly>
+                        </div>
+                    {% endif %}
                     
                     <!-- Botoes de ações -->
                     <div class=" mt-4 w-100 d-flex justify-content-end">
-                        <a class="btn btn-cancelar mb-3" title="voltar" data-bs-toggle="modal" href="#informacoesModal" role="button">Cancelar</a>
-                        <button type="submit" class="btn btn-adicionar mb-3  ms-2">{% block btn-action %}Salvar senha{% endblock btn-action %}</button>
+                        <button type="submit" class="btn btn-danger mb-3  ms-2"><a href="#" class="nav-link">Excluir conta</a></button>
                     </div>
                 </div>
             </form>
