@@ -10,7 +10,7 @@ Mas é definitivamente, o projeto que mais tenho orgulho de ter desenvolvido. Fo
 
 ### Status do Projeto
 
-[![Status Parcialmento Completo](https://img.shields.io/badge/STATUS-Parcialmente_Completo-yellow?style=for-the-badge)]()
+[![Status Completo](https://img.shields.io/badge/STATUS-COMPLETO-green?style=for-the-badge)]()
 
 O projeto pode ser executado. Entretanto, há alguns requisitos que não foram ainda implementados.
 
@@ -24,7 +24,6 @@ O projeto pode ser executado. Entretanto, há alguns requisitos que não foram a
 - [x] Remoção de tarefas
 - [x] Conclusão de tarefas
 - [x] Listagem de tarefas concluídas 
-- [ ] Alterar senha (:warning: Funcionalidade ainda a ser implementada. :relieved:)
   
   
 ### Requisitos
